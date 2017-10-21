@@ -18,6 +18,7 @@ import './App.css';
 import store from './store';
 import firebase from './firebase';
 import { loginUser, logoutUser } from './actions';
+import FromToDate from './component/FromToDate';
 
 
 class App extends Component {
@@ -29,7 +30,7 @@ class App extends Component {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.props.loginUser(user);
-      } 
+      }
     })
   }
   render() {
@@ -70,8 +71,8 @@ class App extends Component {
             <Route exact path="/" component={Main} />
             <Route path="/login" component={Login} />
             <Route path="/mypage" component={MyPage} />
-            <Route exact path="/trip" component={Trip} /> 
-            <Route path="/trip/:tripId" component={TripDetail} /> 
+            <Route exact path="/trip" component={Trip} />
+            <Route path="/trip/:tripId" component={TripDetail} />
             <Route path="/upload" component={Upload} />
           </div>
         </div>
