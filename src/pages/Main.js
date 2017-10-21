@@ -39,6 +39,11 @@ export default class Main extends React.Component {
                 Trip
               </Link>
             </li>
+            <li>
+              <Link to="/search">
+                Search
+              </Link>
+            </li>
           </ul>
         </nav>
         <div>Main</div>
