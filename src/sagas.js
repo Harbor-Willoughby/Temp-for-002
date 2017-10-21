@@ -1,4 +1,5 @@
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import { fork, call, put, takeEvery, takeLatest } from 'redux-saga/effects';
+import screenshotSagas from './sagas/screenshot';
 import firebase from './firebase';
 
 const auth = firebase.auth();
@@ -16,6 +17,7 @@ function* loginGoogleUser() {
 
 function* mySaga() {
   yield takeEvery("LOGIN_USER_REQUEST", loginGoogleUser);
+  yield [fork(screenshotSagas)];
 }
 
 export default mySaga;
