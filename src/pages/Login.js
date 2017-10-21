@@ -1,6 +1,6 @@
 import React from 'react'
 import firebase from '../firebase';
-import { loginGoogleUser, logout } from '../actions';
+import { loginGoogleUser, logoutUser } from '../actions';
 import {
   connect,
 } from 'react-redux';
@@ -24,7 +24,7 @@ class Login extends React.Component {
           구글로 로그인하기
         </button>
         <button
-          onClick={this.props.logout}
+          onClick={this.props.logoutUser}
         >
           로그아웃
         </button>
@@ -41,7 +41,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   loginGoogleUser: () => dispatch(loginGoogleUser()),
-  logout: () => dispatch(logout()),
+  logoutUser: () => dispatch(logoutUser()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
