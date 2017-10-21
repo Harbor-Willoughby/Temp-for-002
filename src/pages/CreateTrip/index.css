@@ -1,6 +1,8 @@
 .create-trip__wrapper {
-  width: 1920px;
-  height: 1080px; }
+  width: 100vw;
+  height: 100vh; 
+  background-size: cover;
+}
 
 .create-trip__logo {
   width: 142px;
@@ -17,18 +19,30 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.4); }
 
+.create-trip--date-img {
+  width: 30px;
+  display: inline-block;
+  float: right;
+  cursor: pointer; }
+
+.create-trip--input-calendar {
+  position: absolute;
+  top: 80px;
+  right: -550px; }
+
 .create-trip--title-wrapper {
   display: flex;
   justify-content: center;
   align-items: center; }
 
 .create-trip--title {
-  font-size: 80px;
+  font-size: 64px;
   color: white;
-  margin-top: 270px; }
+  margin-top: 220px; }
 
 .create-trip--input-wrapper {
   display: flex;
+  position: relative;
   width: 668px; }
 
 .create-trip--date-input {
@@ -40,6 +54,7 @@
   color: white;
   text-align: center;
   font-size: 30px;
+  line-height: 25px;
   padding: 10px;
   height: 50px;
   width: 100%; }
@@ -76,6 +91,7 @@
   background-color: #8e88ff;
   color: white;
   display: flex;
+  border: none;
   justify-content: center;
   align-items: center;
   font-size: 2rem;

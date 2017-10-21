@@ -21,36 +21,36 @@ import './App.css';
 import store from './store';
 import firebase from './firebase';
 import { loginUser, logoutUser } from './actions';
-
+import Voucher from './pages/Voucher/Voucher';
 
 class App extends Component {
   constructor(props) {
     super(props);
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.props.loginUser(user);
       }
     })
-  }
+  };
+
   render() {
     return (
       <BrowserRouter>
-        <div>
-          <Switch>
-            <Route exact path="/" component={Main} />
-            <Route path="/login" component={Login} />
-            <Route path="/mypage" component={MyPage} />
-            <Route exact path="/trip" component={Trip} />
-            <Route exact path="/trip/create" component={CreateTrip} />
-            <Route exact path="/trip/create/register" component={RegisterTrip} />
-            <Route path="/trip/:tripId" component={TripDetail} />
-            <Route path="/upload" component={Upload} />
-            <Route path="/search" component={Search} />
-          </Switch>
-        </div>
+        <Switch>
+          <Route exact path="/" component={Main} />
+          <Route path="/login" component={Login} />
+          <Route path="/mypage" component={MyPage} />
+          <Route exact path="/trip" component={Trip} />
+          <Route exact path="/trip/create" component={CreateTrip} />
+          <Route exact path="/trip/create/register" component={RegisterTrip} />
+          <Route path="/trip/:tripId" component={TripDetail} />
+          <Route path="/upload" component={Upload} />
+          <Route path="/search" component={Search} />
+          <Route path="/voucher" component={Voucher} />
+        </Switch>
       </BrowserRouter>
     );
   }

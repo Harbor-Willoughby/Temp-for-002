@@ -1,16 +1,12 @@
 import React from 'react'
 
 
+
 // 반드시 DayComponent의 자식 형태로 사용되어야 함
 export default class EventComponent extends React.Component {
-
   renderImageType = () => {
     return (
-      <div className="group span-3">
-        <a href="images/gallery/fulls/01.jpg" className="image filtered span-3" data-position="bottom"><img src="images/gallery/thumbs/01.jpg" alt="" /></a>
-        <a href="images/gallery/fulls/02.jpg" className="image filtered span-1-5" data-position="center"><img src="images/gallery/thumbs/02.jpg" alt="" /></a>
-        <a href="images/gallery/fulls/03.jpg" className="image filtered span-1-5" data-position="bottom"><img src="images/gallery/thumbs/03.jpg" alt="" /></a>
-      </div>
+      <a href="images/gallery/fulls/01.jpg" className="image filtered span-3" data-position="bottom"><img src="images/gallery/thumbs/01.jpg" alt="" /></a>
     )
   }
 
