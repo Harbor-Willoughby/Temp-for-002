@@ -20,18 +20,20 @@ export default class CreateTripPage extends React.Component {
     };
   }
 
-  handleSubmit(event) {
+  handleSubmit = (event) => {
     event.preventDefault();
     // Find the text field via the React ref
     const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
+    console.log('this.state.startDate', this.state.startDate);
+    const title = '님을 위한' + text + '여행';
     const newTripKey = firebase.database().ref('/trips').push({
       title: text,
       posted_by: {
         name: '빌드002',
         photoUrl: 'https://image.com',
       },
-      startDate: '2017-10-31',
-      endDate: '2017-11-03',
+      startDate: this.state.startDate._d.toString(),
+      endDate: this.state.endDate._d.toString(),
       thumbnailImageUrl: 'https://image.com',
       createdAt: new Date().toString()
     }).key;
@@ -90,7 +92,7 @@ export default class CreateTripPage extends React.Component {
             <div className="create-trip--input-wrapper">
               <div className="create-trip--date-input">
                 {startDateString} ~ {endDateString}
-                <img className="create-trip--date-img" alt="" src={ calendarIcon } onClick={ _.partial(this.handleChange, 'showDate', !showDate) } />
+                <img className="create-trip--date-img" alt="" src={ calendarIcon } onClick={ _.partial(this.handleChange, 'showDate', !showDate) } ref="dateInput" />
               </div>
               { showDate && <div className="create-trip--input-calendar">
                 <FromToDate
