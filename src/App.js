@@ -12,6 +12,7 @@ import Login from './pages/Login';
 import MyPage from './pages/MyPage';
 import Trip from './pages/trip/trip';
 import CreateTrip from './pages/CreateTrip/index';
+import RegisterTrip from './pages/register-trip/register-trip';
 import TripDetail from './pages/trip/trip-detail';
 import Upload from './pages/Upload';
 import Search from './pages/Search';
@@ -44,6 +45,7 @@ class App extends Component {
             <Route path="/mypage" component={MyPage} />
             <Route exact path="/trip" component={Trip} />
             <Route exact path="/trip/create" component={CreateTrip} />
+            <Route exact path="/trip/create/register" component={RegisterTrip} />
             <Route path="/trip/:tripId" component={TripDetail} />
             <Route path="/upload" component={Upload} />
             <Route path="/search" component={Search} />
