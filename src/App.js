@@ -12,7 +12,9 @@ import Login from './pages/Login';
 import MyPage from './pages/MyPage';
 import Trip from './pages/trip/trip';
 import CreateTrip from './pages/CreateTrip/index';
-import TripDetail from './pages/trip/trip-detail'; import logo from './logo.svg';
+import TripDetail from './pages/trip/trip-detail';
+import Upload from './pages/Upload';
+import logo from './logo.svg';
 import './App.css';
 import store from './store';
 import firebase from './firebase';
@@ -42,6 +44,7 @@ class App extends Component {
             <Route exact path="/trip" component={Trip} /> 
             <Route exact path="/trip/create" component={CreateTrip} /> 
             <Route path="/trip/:tripId" component={TripDetail} /> 
+            <Route path="/upload" component={Upload} />
           </Switch>
         </div>
       </BrowserRouter>
