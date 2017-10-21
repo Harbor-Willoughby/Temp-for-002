@@ -12,6 +12,7 @@ import Login from './pages/Login';
 import MyPage from './pages/MyPage';
 import Trip from './pages/trip/trip';
 import TripDetail from './pages/trip/trip-detail';
+import Upload from './pages/Upload';
 import logo from './logo.svg';
 import './App.css';
 import store from './store';
@@ -58,6 +59,11 @@ class App extends Component {
                   Trip
                 </Link>
               </li>
+              <li>
+                <Link to="/upload">
+                  Upload
+                </Link>
+              </li>
             </ul>
           </nav>
           <div>
@@ -66,6 +72,7 @@ class App extends Component {
             <Route path="/mypage" component={MyPage} />
             <Route exact path="/trip" component={Trip} /> 
             <Route path="/trip/:tripId" component={TripDetail} /> 
+            <Route path="/upload" component={Upload} />
           </div>
         </div>
       </BrowserRouter>
