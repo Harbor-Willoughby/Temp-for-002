@@ -1,0 +1,28 @@
+.create-trip__wrapper {
+  width: 1920px;
+  height: 1080px; }
+
+.create-trip__logo {
+  width: 142px;
+  height: 37px;
+  font-family: ArialRoundedMT;
+  font-size: 40px;
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: center;
+  color: #ffffff; }
+
+.create-trip__button {
+  width: 666px;
+  height: 72px;
+  border-radius: 3px;
+  background-color: #8e88ff;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  margin-top: 60px; }
+
+.create-trip__button:hover {
+  background-color: #5555aa; }
