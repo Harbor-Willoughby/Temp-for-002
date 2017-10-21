@@ -9,6 +9,7 @@ import {
   Link,
 } from 'react-router-dom';
 import ReactDOM from 'react-dom';
+import _ from 'lodash';
 
 export default class Main extends React.Component {
   constructor(props) {
@@ -18,7 +19,6 @@ export default class Main extends React.Component {
     }
   }
   componentDidMount = () => {
-    var _= require('underscore');
     firebase.database().ref('/trips').orderByChild('createdAt').on('value', snapshot => {
       // 현재 trips date를 가져오는 부분
       console.log(snapshot.val());
