@@ -28,8 +28,22 @@
   margin-top: 270px; }
 
 .create-trip--input-wrapper {
+  position: relative;
   display: flex;
   width: 668px; }
+
+.create-trip--date-img {
+  width: 30px;
+  display: inline-block;
+  float: right;
+  cursor: pointer;
+}
+
+.create-trip--input-calendar {
+  position: absolute;
+  top: 80px;
+  right: -550px;
+}
 
 .create-trip--date-input {
   margin-top: 20px;
@@ -42,6 +56,7 @@
   font-size: 30px;
   padding: 10px;
   height: 50px;
+  line-height: 25px;
   width: 100%; }
 
 .create-trip--form-wrapper {
@@ -79,7 +94,10 @@
   justify-content: center;
   align-items: center;
   font-size: 2rem;
-  margin-top: 60px; }
+  margin-top: 60px;
+  cursor: pointer;
+}
 
 .create-trip__button:hover {
-  background-color: #5555aa; }
+  background-color: #5555aa;
+}

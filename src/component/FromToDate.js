@@ -4,13 +4,19 @@ import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import { SingleDatePicker, DateRangePicker, DayPickerRangeController } from 'react-dates';
 import moment from 'moment';
+import './FromToDate.scss';
 import _ from 'lodash';
 import './react_dates_overrides.css';
 
 const START_DATE = 'startDate';
 const END_DATE = 'endDate';
 
-const propTypes = {};
+const propTypes = {
+  startDate: PropTypes.object.isRequired,
+  endDate: PropTypes.object.isRequired,
+  handleStartDateChange: PropTypes.func.isRequired,
+  handleEndDateChange: PropTypes.func.isRequired
+};
 
 const defaultProps = {
   initialStartDate: moment(),
@@ -23,12 +29,11 @@ class FromToDate extends Component {
     super(props);
     this.state = {
       focusedInput: props.autoFocusEndDate ? END_DATE : START_DATE,
-      startDate: props.initialStartDate,
-      endDate: props.initialEndDate,
     };
   }
   onDatesChange = ({ startDate, endDate }) => {
-    this.setState({ startDate, endDate });
+    this.props.handleStartDateChange(startDate);
+    this.props.handleEndDateChange(endDate);
   }
 
   onFocusChange = (focusedInput) => {
@@ -41,10 +46,8 @@ class FromToDate extends Component {
   componentDidMount() {}
 
   render() {
-    const { focusedInput, startDate, endDate } = this.state;
-    const startDateString = startDate && startDate.format('YYYY-MM-DD');
-    const endDateString = endDate && endDate.format('YYYY-MM-DD');
-
+    const { focusedInput } = this.state;
+    const { startDate, endDate } = this.props;
     const props = _.omit(this.props, [
       'autoFocus',
       'autoFocusEndDate',
@@ -52,13 +55,8 @@ class FromToDate extends Component {
       'initialEndDate',
     ]);
 
-    console.log(props);
     return (
         <div className="from-to-date">
-          <div style={{ marginBottom: 16 }}>
-            <input type="text" name="start date" value={startDateString} readOnly />
-            <input type="text" name="end date" value={endDateString} readOnly />
-          </div>
           <DayPickerRangeController
               id="dayPicker"
               numberOfMonths={ this.props.numberOfMonths }
