@@ -2,7 +2,11 @@ import React from 'react'
 import firebase from '../firebase';
 import map from 'lodash/map';
 import isEmpty from 'lodash/isEmpty';
-
+import {
+  BrowserRouter,
+  Route,
+  Link,
+} from 'react-router-dom';
 
 export default class Main extends React.Component {
   constructor(props) {
@@ -50,7 +54,7 @@ export default class Main extends React.Component {
               console.log(trip);
                 return (
                   <div key={trip.id}>
-                    <h1>{trip.title}</h1>
+                    <Link to={`/trip/${trip.id}`}><h1>{trip.title}</h1></Link>
                     <p>게시자: {trip.posted_by.name}</p>
                   </div>
                 )
