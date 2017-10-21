@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
   BrowserRouter,
   Route,
-  Link,
+  Switch,
 } from 'react-router-dom';
 import {
   connect,
@@ -11,8 +11,8 @@ import Main from './pages/Main';
 import Login from './pages/Login';
 import MyPage from './pages/MyPage';
 import Trip from './pages/trip/trip';
-import TripDetail from './pages/trip/trip-detail';
-import logo from './logo.svg';
+import CreateTrip from './pages/CreateTrip/index';
+import TripDetail from './pages/trip/trip-detail'; import logo from './logo.svg';
 import './App.css';
 import store from './store';
 import firebase from './firebase';
@@ -34,39 +34,15 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="App">
-          <h1>Welcome to Build 002</h1>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">
-                  Main
-                </Link>
-              </li>
-              <li>
-                <Link to="/login">
-                  Login
-                </Link>
-              </li>
-              <li>
-                <Link to="/mypage">
-                  MyPage
-                </Link>
-              </li>
-              <li>
-                <Link to="/trip">
-                  Trip
-                </Link>
-              </li>
-            </ul>
-          </nav>
-          <div>
+        <div>
+          <Switch>
             <Route exact path="/" component={Main} />
             <Route path="/login" component={Login} />
             <Route path="/mypage" component={MyPage} />
             <Route exact path="/trip" component={Trip} /> 
+            <Route exact path="/trip/create" component={CreateTrip} /> 
             <Route path="/trip/:tripId" component={TripDetail} /> 
-          </div>
+          </Switch>
         </div>
       </BrowserRouter>
     );
