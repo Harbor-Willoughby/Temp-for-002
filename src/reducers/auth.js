@@ -19,9 +19,9 @@ const authReducer = (state = DEFAULT_STATE, action) => {
     return {
       ...state,
       isLoggingIn: false,
-      name: action.payload.name,
-      profileImageUrl: action.payload.profileImageUrl,
-      email: action.payload.email,
+      name: action.payload.additionalUserInfo.profile.name,
+      profileImageUrl: action.payload.additionalUserInfo.profile.picture,
+      email: action.payload.additionalUserInfo.profile.email,
     }
   }
 

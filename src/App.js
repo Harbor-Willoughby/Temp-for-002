@@ -10,6 +10,7 @@ import {
 import Main from './pages/Main';
 import Login from './pages/Login';
 import MyPage from './pages/MyPage';
+import Trip from './stories/trip/trip';
 import logo from './logo.svg';
 import './App.css';
 import store from './store';
