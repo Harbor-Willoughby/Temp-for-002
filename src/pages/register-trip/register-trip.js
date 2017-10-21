@@ -3,22 +3,26 @@ import firebase from '../../firebase';
 import ReactDOM from 'react-dom';
 import isEmpty from 'lodash/isEmpty';
 import map from 'lodash/map';
-
+import bgImage from './bg02.jpg';
+import logoImage from './logo.png';
+import popbuttonImage from './pop-button.png';
 
 export default class RegisterTrip extends React.Component {
-  registEvent = (day) => {
+  handleSubmit(event) {
     var pair_key = this.props.location.state.data;
 
+    event.preventDefault();
     // Find the text field via the React ref
     const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
-    firebase.database().ref('/trips').child(pair_key).child('/events').push({
+    firebase.database().ref('/events').push({
       pair_key: pair_key,
       title: text,
       posted_by: {
         name: '빌드002',
         photoUrl: 'https://image.com',
       },
-      day: day,
+      startDate: '2017-10-31',
+      endDate: '2017-11-03',
       thumbnailImageUrl: 'https://image.com',
       createdAt: new Date().toString()
     })
@@ -26,34 +30,33 @@ export default class RegisterTrip extends React.Component {
     ReactDOM.findDOMNode(this.refs.textInput).value = '';
   }
 
-  registerForm = (day) => {
+  render() {
+    document.body.style.backgroundImage = `url(${bgImage})`; 
     return (
-    <div>
+      <div id="page-wrapper">
+      <img src={logoImage} className="logo" />
+      <div>
+        <h2>당신의 여행 첫째날을 SCRAP 하세요!</h2>
+        <h3>사진, 링크, 메모 등 자유롭게 이용하실 수 있습니다.</h3>
+      </div>
+      <div>
+        <img src={popbuttonImage} className="pop-button" />
+      </div>
+      {/*
+      <form className="new-event" onSubmit={this.handleSubmit.bind(this)} >
+
         <input
 
         type="text"
 
         ref="textInput"
 
-        placeholder={"events " + day + " Day"}
+        placeholder="Type to add new events"
 
         />
-        <button onClick={(e)=>this.registEvent(day)} >Regist</button>
-    </div>
-  )}
 
-  render() {
-    let inputs = [];
-    for (let i = 0; i < this.props.location.state.days; i ++) {
-      inputs.push(this.registerForm(i + 1));
-    }
-
-    return (
-      <div id="page-wrapper">
-        Register Your Trip!
-    
-        <br />
-        {inputs}
+      </form>
+      */}
       </div>
     );
   }

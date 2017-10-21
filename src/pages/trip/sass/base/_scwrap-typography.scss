@@ -10,3 +10,31 @@ h2 {
 		color: #ffffff;
 	}
 }
+
+body, input, select, textarea {
+	color: _palette(fg);
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	color: _palette(fg-bold);
+	a {
+		color: inherit;
+		text-decoration: none;
+	}
+}
+
+	a {
+		@include vendor('transition', (
+			'color #{_duration(transition)} ease-in-out',
+			'border-bottom-color #{_duration(transition)} ease-in-out'
+		));
+		color: inherit;
+		border-bottom: dotted 1px;
+		text-decoration: none;
+
+		&:hover {
+			border-bottom-color: transparent;
+			color: _palette(accent3);
+		}
+	}
