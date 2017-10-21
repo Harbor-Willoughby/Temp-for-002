@@ -20,30 +20,46 @@ export default class CreateTripPage extends React.Component {
     };
   }
 
+  diffDate = (date1, date2) => {
+    let diffDate1 = date1 instanceof Date ? date1 : new Date(date1);
+    let diffDate2 = date2 instanceof Date ? date2 : new Date(date2);
+ 
+    var diff = Math.abs(diffDate2.getTime() - diffDate1.getTime());
+    diff = Math.ceil(diff / (1000 * 3600 * 24)) + 1;
+ 
+    return diff;
+  }
+
+
+
   handleSubmit = (event) => {
     event.preventDefault();
+
     // Find the text field via the React ref
     const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
     console.log('this.state.startDate', this.state.startDate);
     const title = '님을 위한' + text + '여행';
+    const startDate = this.state.startDate._d.toString();
+    const endDate = this.state.endDate._d.toString();
     const newTripKey = firebase.database().ref('/trips').push({
       title: text,
       posted_by: {
         name: '빌드002',
         photoUrl: 'https://image.com',
       },
-      startDate: this.state.startDate._d.toString(),
-      endDate: this.state.endDate._d.toString(),
+      startDate: startDate,
+      endDate: endDate,
       thumbnailImageUrl: 'https://image.com',
-      createdAt: new Date().toString()
+      createdAt: new Date().toString()  
     }).key;
     // Clear form
     ReactDOM.findDOMNode(this.refs.textInput).value = '';
     // this.props.history.push("/trip/create/register");
 
+    const days = this.diffDate(this.state.startDate._d, this.state.endDate._d);
     this.props.history.push({
       pathname: '/trip/create/register',
-      state: { data: newTripKey }
+      state: { data: newTripKey, days: days }
     })
 
   }

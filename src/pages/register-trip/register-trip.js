@@ -4,22 +4,21 @@ import ReactDOM from 'react-dom';
 import isEmpty from 'lodash/isEmpty';
 import map from 'lodash/map';
 
+
 export default class RegisterTrip extends React.Component {
-  handleSubmit(event) {
+  registEvent = (day) => {
     var pair_key = this.props.location.state.data;
 
-    event.preventDefault();
     // Find the text field via the React ref
     const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
-    firebase.database().ref('/events').push({
+    firebase.database().ref('/trips').child(pair_key).child('/events').push({
       pair_key: pair_key,
       title: text,
       posted_by: {
         name: '빌드002',
         photoUrl: 'https://image.com',
       },
-      startDate: '2017-10-31',
-      endDate: '2017-11-03',
+      day: day,
       thumbnailImageUrl: 'https://image.com',
       createdAt: new Date().toString()
     })
@@ -27,25 +26,34 @@ export default class RegisterTrip extends React.Component {
     ReactDOM.findDOMNode(this.refs.textInput).value = '';
   }
 
-  render() {
-
+  registerForm = (day) => {
     return (
-      <div id="page-wrapper">
-        Register Your Trip!
-    add Event
-      <form className="new-event" onSubmit={this.handleSubmit.bind(this)} >
-
+    <div>
         <input
 
         type="text"
 
         ref="textInput"
 
-        placeholder="Type to add new events"
+        placeholder={"events " + day + " Day"}
 
         />
+        <button onClick={(e)=>this.registEvent(day)} >Regist</button>
+    </div>
+  )}
 
-      </form>
+  render() {
+    let inputs = [];
+    for (let i = 0; i < this.props.location.state.days; i ++) {
+      inputs.push(this.registerForm(i + 1));
+    }
+
+    return (
+      <div id="page-wrapper">
+        Register Your Trip!
+    
+        <br />
+        {inputs}
       </div>
     );
   }

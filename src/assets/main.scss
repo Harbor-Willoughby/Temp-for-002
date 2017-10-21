@@ -1,0 +1,40 @@
+// Fonts
+// ---------------------------------------
+@import url(https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@font-face {
+  font-family: 'GOTHAM';
+  font-weight: 700;
+  src: local('GOTHAM-BOLD'),
+  url('/src/assets/fonts/GothamBold.woff2') format('woff2'),
+  url('/src/assets/fonts/GothamBold.woff') format('woff'),
+  url('/src/assets/fonts/GothamBold.ttf') format('truetype');
+}
+// @font-face {
+//   font-family: 'GOTHAM';
+//   font-weight: 400;
+//   src: local('GOTHAM-MEDIUM'),
+//   url('./fonts/GOTHAM-MEDIUM.woff2') format('woff2'),
+//   url('./fonts/GOTHAM-MEDIUM.woff') format('woff'),
+//   url('./fonts/GOTHAM-MEDIUM.ttf') format('truetype');
+// }
+// @font-face {
+//   font-family: 'GOTHAM';
+//   font-weight: 100;
+//   src: local('GOTHAM-LIGHT'),
+//   url('./fonts/GOTHAM-LIGHT.woff2') format('woff2'),
+//   url('./fonts/GOTHAM-LIGHT.woff') format('woff'),
+//   url('./fonts/GOTHAM-LIGHT.ttf') format('truetype');
+// }
+
+
+* {
+  font-family: 'Spoqa Han Sans';
+}
+
+body, input, select, textarea {
+  font-family: 'Spoqa Han Sans';
+}
+h1, h2, h3, h4, h5, h6 {
+  // font-family: _font(family);
+}
+
