@@ -1,9 +1,9 @@
 import React from 'react'
 import './index.css';
-import bgImage from './create-post-bg.jpeg';
+import bgImage from '../image/create-post-bg.jpeg';
 import moment from 'moment';
 import _ from 'lodash';
-import accountIcon from './accountIcon.png';
+import accountIcon from '../image/accountIcon.png';
 import calendarIcon from './ic-calendar.png';
 import FromToDate from '../../component/FromToDate';
 
