@@ -2,11 +2,13 @@ import React from 'react'
 import firebase from '../firebase';
 import map from 'lodash/map';
 import isEmpty from 'lodash/isEmpty';
+import sortBy from 'lodash/sortBy'
 import {
   BrowserRouter,
   Route,
   Link,
 } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 
 export default class Main extends React.Component {
   constructor(props) {
@@ -16,18 +18,27 @@ export default class Main extends React.Component {
     }
   }
   componentDidMount = () => {
-    firebase.database().ref('/trips').on('value', snapshot => {
+    var _= require('underscore');
+    firebase.database().ref('/trips').orderByChild('createdAt').on('value', snapshot => {
       // 현재 trips date를 가져오는 부분
       console.log(snapshot.val());
+      var arr =  _.sortBy(snapshot.val(), function(num) {
+          return num;
+      })
       this.setState({
-        trips: map(snapshot.val(), (trip, key) => ({ id: key, ...trip })),
+        trips: map(_.sortBy(snapshot.val(), function(num) {
+          return num;
+      }).reverse(), (trip, key) => ({ id: key, ...trip })),
       })
     })
   }
 
-  addTripToDatabase = (data /*data의 형태는 Trip Model 형태와 동일*/) => {
+  handleSubmit(event) {
+    event.preventDefault();
+    // Find the text field via the React ref
+    const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
     firebase.database().ref('/trips').push({
-      title: "샌프란 여행",
+      title: text,
       posted_by: {
         name: '윌로비',
         photoUrl: 'https://image.com',
@@ -35,16 +46,30 @@ export default class Main extends React.Component {
       startDate: '2017-10-31',
       endDate: '2017-11-03',
       thumbnailImageUrl: 'https://image.com',
+      createdAt: new Date().toString()
     })
+    // Clear form
+    ReactDOM.findDOMNode(this.refs.textInput).value = '';
   }
 
   render() {
     return (
       <div>
         Main
-        <button onClick={this.addTripToDatabase}>
-          더미 Trip 추가하기
-        </button>
+
+          <form className="new-task" onSubmit={this.handleSubmit.bind(this)} >
+
+            <input
+
+              type="text"
+
+              ref="textInput"
+
+              placeholder="Type to add new tasks"
+
+            />
+
+          </form>
         <div>
           {isEmpty(this.state.trips) ? (
               <div>
