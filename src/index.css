@@ -36,24 +36,29 @@ caption, th, td {
   font-weight: normal;
   vertical-align: middle; }
 
+@font-face  {
+  font-family: 'Gotham';
+  src: url("./assets/fonts/GOTHAM-BOLD.TTF") format("truetype");
+}
+
 @font-face {
   font-family: 'AppleSDGothicNeoR';
-  src: url("/src/assets/fonts/AppleSDGothicNeoR.eot");
-  src: url("/src/assets/fonts/AppleSDGothicNeoR.woff2") format("woff2"), url("/src/assets/fonts/AppleSDGothicNeoR.woff") format("woff"), url("/src/assets/fonts/AppleSDGothicNeoR.ttf") format("truetype"), url("/src/assets/fonts/AppleSDGothicNeoR.eot?#iefix") format("embedded-opentype");
+  src: url("./assets/fonts/AppleSDGothicNeoR.eot");
+  src: url("./assets/fonts/AppleSDGothicNeoR.woff2") format("woff2"), url("./assets/fonts/AppleSDGothicNeoR.woff") format("woff"), url("./assets/fonts/AppleSDGothicNeoR.ttf") format("truetype"), url("./assets/fonts/AppleSDGothicNeoR.eot?#iefix") format("embedded-opentype");
   font-weight: normal;
   font-style: normal; }
 @font-face {
   font-family: 'SF-UI-Display';
   font-weight: 700;
-  src: local("SF-UI-Display-Bold"), url("/src/assets/fonts/SF-UI-Display-Bold.woff2") format("woff2"), url("/src/assets/fonts/SF-UI-Display-Bold.woff") format("woff"), url("/src/assets/fonts/SF-UI-Display-Bold.ttf") format("truetype"); }
+  src: local("SF-UI-Display-Bold"), url("./assets/fonts/SF-UI-Display-Bold.woff2") format("woff2"), url("./assets/fonts/SF-UI-Display-Bold.woff") format("woff"), url("./assets/fonts/SF-UI-Display-Bold.ttf") format("truetype"); }
 @font-face {
   font-family: 'SF-UI-Display';
   font-weight: 400;
-  src: local("SF-UI-Display-Medium"), url("/src/assets/fonts/SF-UI-Display-Medium.woff2") format("woff2"), url("/src/assets/fonts/SF-UI-Display-Medium.woff") format("woff"), url("/src/assets/fonts/SF-UI-Display-Medium.ttf") format("truetype"); }
+  src: local("SF-UI-Display-Medium"), url("./assets/fonts/SF-UI-Display-Medium.woff2") format("woff2"), url("./assets/fonts/SF-UI-Display-Medium.woff") format("woff"), url("./assets/fonts/SF-UI-Display-Medium.ttf") format("truetype"); }
 @font-face {
   font-family: 'SF-UI-Display';
   font-weight: 300;
-  src: local("SF-UI-Display-Regular"), url("/src/assets/fonts/SF-UI-Display-Regular.woff2") format("woff2"), url("/src/assets/fonts/SF-UI-Display-Regular.woff") format("woff"), url("/src/assets/fonts/SF-UI-Display-Regular.ttf") format("truetype"); }
+  src: local("SF-UI-Display-Regular"), url("./assets/fonts/SF-UI-Display-Regular.woff2") format("woff2"), url("./assets/fonts/SF-UI-Display-Regular.woff") format("woff"), url("./assets/fonts/SF-UI-Display-Regular.ttf") format("truetype"); }
 html {
   font-size: 75%;
   -webkit-text-size-adjust: 100%;
