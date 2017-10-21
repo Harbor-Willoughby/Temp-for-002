@@ -6,6 +6,7 @@ import Voucher2 from './image/voucher2.png';
 import Voucher3 from './image/voucher3.png';
 import BtnDown from './image/btn-down.png';
 import BtnView from './image/btn-view.png';
+import BgPlus from './image/bg-plus.png';
 import VoucherImage from './image/voucher-image.jpeg';
 import _ from 'lodash';
 import './Voucher.css';
@@ -68,6 +69,7 @@ class Voucher extends Component {
             <img alt="" src={ ScwrapPeople } />
           </div>
           <div className="content">
+            <div className="scroll-horizonal">
             {
               _.map(vouchers, voucher => {
                 if(voucher.id == 1 && this.state.isActive) {
@@ -88,7 +90,6 @@ class Voucher extends Component {
                     </div>
                   </div>)
                 }
-
                 return (<div key={ voucher.id } className="voucher-box" onClick={ this.handleClick }>
                   <div className="voucher-box-header"></div>
                   <img alt="" src={ voucher.image } />
@@ -104,6 +105,10 @@ class Voucher extends Component {
                 </div>);
               })
             }
+            <div className="voucher-box">
+              <img alt="" src={ BgPlus } />
+            </div>
+            </div>
           </div>
           <div className="footer"></div>
           <div className="circle1-box">

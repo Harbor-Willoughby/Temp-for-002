@@ -48,8 +48,15 @@
 
 .voucher-wrapper .content {
   position: absolute;
+  width: 950px;
   top: 140px;
   left: 55px;
+  overflow: hidden;
+}
+
+.voucher-wrapper .content .scroll-horizonal {
+  width: 1300px;
+  overflow: auto;
 }
 
 .voucher-box-active {
