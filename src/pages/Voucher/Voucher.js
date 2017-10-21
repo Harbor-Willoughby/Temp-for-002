@@ -7,6 +7,7 @@ import Voucher3 from './image/voucher3.png';
 import BtnDown from './image/btn-down.png';
 import BtnView from './image/btn-view.png';
 import BgPlus from './image/bg-plus.png';
+import BtnPlus from './image/btn-plus.png';
 import VoucherImage from './image/voucher-image.jpeg';
 import _ from 'lodash';
 import './Voucher.css';
@@ -70,44 +71,50 @@ class Voucher extends Component {
           </div>
           <div className="content">
             <div className="scroll-horizonal">
-            {
-              _.map(vouchers, voucher => {
-                if(voucher.id == 1 && this.state.isActive) {
-                  return (<div key={ voucher.id } className="voucher-box-active">
-                    <div className="title1">
-                      0{ voucher.id }
-                    </div>
+              <div className="inner">
+              {
+                _.map(vouchers, voucher => {
+                  if(voucher.id == 1 && this.state.isActive) {
+                    return (<div key={ voucher.id } className="voucher-box-active">
+                      <div className="title1">
+                        0{ voucher.id }
+                      </div>
+                      <img alt="" src={ voucher.image } />
+                      <div className="title2">
+                        { voucher.name }
+                      </div>
+                      <div className="title3">
+                        2017 . 10 . 21  SAT 20:00<br />
+                        Champ de Mars, Paris
+                      </div>
+                      <div className="button">
+                        <span onClick={ this.handleView }>View <img alt="" src={ BtnView } /></span><span>Download<img alt="" src={ BtnDown } /></span>
+                      </div>
+                    </div>)
+                  }
+                  return (<div key={ voucher.id } className="voucher-box" onClick={ this.handleClick }>
+                    <div className="voucher-box-header"></div>
                     <img alt="" src={ voucher.image } />
-                    <div className="title2">
-                      { voucher.name }
+                    <div className="voucher-box-footer">
+                      <div className="title1">
+                        0{ voucher.id }
+                      </div>
+                      <div className="title2">
+                        { voucher.name }<br />
+                        { voucher.date }
+                      </div>
                     </div>
-                    <div className="title3">
-                      2017 . 10 . 21  SAT 20:00<br />
-                      Champ de Mars, Paris
-                    </div>
-                    <div className="button">
-                      <span onClick={ this.handleView }>View <img alt="" src={ BtnView } /></span><span>Download<img alt="" src={ BtnDown } /></span>
-                    </div>
-                  </div>)
-                }
-                return (<div key={ voucher.id } className="voucher-box" onClick={ this.handleClick }>
-                  <div className="voucher-box-header"></div>
-                  <img alt="" src={ voucher.image } />
-                  <div className="voucher-box-footer">
-                    <div className="title1">
-                      0{ voucher.id }
-                    </div>
-                    <div className="title2">
-                      { voucher.name }<br />
-                      { voucher.date }
-                    </div>
-                  </div>
-                </div>);
-              })
-            }
-            <div className="voucher-box">
-              <img alt="" src={ BgPlus } />
-            </div>
+                  </div>);
+                })
+              }
+              <div className="voucher-box">
+                <img alt="" src={ BgPlus } />
+                <div className="voucher-plus-btn">
+                  <img width={ 80 } alt="" src={ BtnPlus } /><br />
+                  바우처를 등록 해주세요
+                </div>
+              </div>
+              </div>
             </div>
           </div>
           <div className="footer"></div>

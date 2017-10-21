@@ -51,10 +51,15 @@
   width: 950px;
   top: 140px;
   left: 55px;
-  overflow: hidden;
 }
 
 .voucher-wrapper .content .scroll-horizonal {
+  position: relative;
+  width: auto;
+  overflow: auto;
+}
+
+.voucher-wrapper .content .scroll-horizonal .inner {
   width: 1300px;
   overflow: auto;
 }
@@ -136,6 +141,17 @@
   position: relative;
 }
 
+.voucher-plus-btn {
+  position: absolute;
+  top: 33%;
+  left: 25%;
+  text-align: center;
+}
+
+.voucher-plus-btn > img {
+  width: 80px;
+}
+
 .voucher-box-header {
   position: absolute;
   top: 0;
@@ -173,7 +189,7 @@
   color: #ffffff;
 }
 
-.voucher-box img {
+.voucher-box > img {
   width: 300px;
   margin-right: 15px;
 }
