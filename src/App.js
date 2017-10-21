@@ -10,8 +10,8 @@ import {
 import Main from './pages/Main';
 import Login from './pages/Login';
 import MyPage from './pages/MyPage';
-import Trip from './stories/trip/trip';
-import TripDetail from './stories/trip/trip-detail';
+import Trip from './component/trip/trip';
+import TripDetail from './component/trip/trip-detail';
 import logo from './logo.svg';
 import './App.css';
 import store from './store';
