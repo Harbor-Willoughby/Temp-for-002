@@ -38,10 +38,11 @@
 
 			img {
 				@include vendor('transition', 'transform #{_duration(transition)} ease-in-out');
+				background: white;
 			}
 
 			&:after {
-				@include vendor('transition', 'opacity #{_duration(transition)} ease-in-out');
+				// @include vendor('transition', 'opacity #{_duration(transition)} ease-in-out');
 			}
 
 			&:hover {
@@ -49,9 +50,9 @@
 					@include vendor('transform', 'scale(1.025)');
 				}
 
-				&:after {
-					opacity: 0;
-				}
+				// &:after {
+				// 	opacity: 0;
+				// }
 			}
 		}
 
@@ -70,26 +71,26 @@
 			@include vendor('justify-content', 'center');
 			@include vendor('pointer-events', 'none');
 			@include vendor('user-select', 'none');
-			@include vendor('transition', (
-				'opacity #{_duration(gallery-lightbox-fadein)} ease',
-				'visibility #{_duration(gallery-lightbox-fadein)}',
-				'z-index #{_duration(gallery-lightbox-fadein)}'
-			));
+			// @include vendor('transition', (
+			// 	'opacity #{_duration(gallery-lightbox-fadein)} ease',
+			// 	'visibility #{_duration(gallery-lightbox-fadein)}',
+			// 	'z-index #{_duration(gallery-lightbox-fadein)}'
+			// ));
 			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 			position: fixed;
 			top: 0;
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background-color: transparentize(_palette(bg), 1 - _misc(gallery-lightbox-opacity));
-			opacity: 0;
+			// background-color: transparentize(_palette(bg), 1 - _misc(gallery-lightbox-opacity));
+			// opacity: 0;
 			outline: 0;
 			visibility: none;
 			z-index: 0;
 
 			&:before {
 				@include vendor('animation', 'gallery-modal-spinner 1s infinite linear');
-				@include vendor('transition', 'opacity #{_duration(gallery-lightbox-fadein) * 0.5} ease');
+				// @include vendor('transition', 'opacity #{_duration(gallery-lightbox-fadein) * 0.5} ease');
 				@include vendor('transition-delay', '#{_duration(gallery-lightbox-fadein)}');
 				content: '';
 				display: block;
@@ -99,11 +100,11 @@
 				width: 4rem;
 				height: 4rem;
 				margin: -2rem 0 0 -2rem;
-				background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="96px" height="96px" viewBox="0 0 96 96" zoomAndPan="disable"><style>circle {fill: transparent; stroke: #{_palette(fg-bold)}; stroke-width: 1.5px; }</style><defs><clipPath id="corner"><polygon points="0,0 48,0 48,48 96,48 96,96 0,96" /></clipPath></defs><g clip-path="url(#corner)"><circle cx="48" cy="48" r="32"/></g></svg>');
+				// background-image: svg-url('<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="96px" height="96px" viewBox="0 0 96 96" zoomAndPan="disable"><style>circle {fill: transparent; stroke: #{_palette(fg-bold)}; stroke-width: 1.5px; }</style><defs><clipPath id="corner"><polygon points="0,0 48,0 48,48 96,48 96,96 0,96" /></clipPath></defs><g clip-path="url(#corner)"><circle cx="48" cy="48" r="32"/></g></svg>');
 				background-position: center;
 				background-repeat: no-repeat;
 				background-size: 4rem;
-				opacity: 0;
+				// opacity: 0;
 			}
 
 			&:after {
@@ -123,11 +124,11 @@
 
 			.inner {
 				@include vendor('transform', 'translateY(0.75rem)');
-				@include vendor('transition', (
-					'opacity #{_duration(gallery-lightbox-fadein) * 0.5} ease',
-					'transform #{_duration(gallery-lightbox-fadein) * 0.5} ease'
-				));
-				opacity: 0;
+				// @include vendor('transition', (
+				// 	'opacity #{_duration(gallery-lightbox-fadein) * 0.5} ease',
+				// 	'transform #{_duration(gallery-lightbox-fadein) * 0.5} ease'
+				// ));
+				// opacity: 0;
 
 				img {
 					display: block;
@@ -151,17 +152,17 @@
 			&.loaded {
 				.inner {
 					@include vendor('transform', 'translateY(0)');
-					@include vendor('transition', (
-						'opacity #{_duration(gallery-lightbox-fadein)} ease',
-						'transform #{_duration(gallery-lightbox-fadein)} ease'
-					));
+					// @include vendor('transition', (
+					// 	'opacity #{_duration(gallery-lightbox-fadein)} ease',
+					// 	'transform #{_duration(gallery-lightbox-fadein)} ease'
+					// ));
 					opacity: 1;
 				}
 
-				&:before {
-					@include vendor('transition-delay', '0s');
-					opacity: 0;
-				}
+				// &:before {
+				// 	@include vendor('transition-delay', '0s');
+				// 	opacity: 0;
+				// }
 			}
 		}
 	}

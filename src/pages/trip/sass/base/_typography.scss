@@ -79,14 +79,14 @@
 		&.major {
 			position: relative;
 
-			&:after {
-				content: '';
-				position: absolute;
-				left: 0;
-				width: 3.5rem;
-				height: 0.1rem;
-				background-color: _palette(border);
-			}
+			// &:after {
+			// 	content: '';
+			// 	position: absolute;
+			// 	left: 0;
+			// 	width: 3.5rem;
+			// 	height: 0.1rem;
+			// 	background-color: _palette(border);
+			// }
 		}
 	}
 
