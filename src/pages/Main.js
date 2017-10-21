@@ -20,6 +20,11 @@ export default class Main extends React.Component {
               </Link>
             </li>
             <li>
+              <Link to="/trip/create">
+                새로운 여행 준비하기
+              </Link>
+            </li>
+            <li>
               <Link to="/login">
                 Login
               </Link>
