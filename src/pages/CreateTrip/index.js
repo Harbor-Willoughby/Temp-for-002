@@ -69,6 +69,7 @@ export default class CreateTripPage extends React.Component {
                     endDate={ endDate }
                     handleStartDateChange={ _.partial(this.handleChange, 'startDate', _) }
                     handleEndDateChange={ _.partial(this.handleChange, 'endDate', _) }
+                    onBlur={ _.partial(this.handleChange, 'showDate', !showDate) }
                 /></div> }
             </div>
             <div>

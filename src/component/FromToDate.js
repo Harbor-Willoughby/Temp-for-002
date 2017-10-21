@@ -62,6 +62,7 @@ class FromToDate extends Component {
               numberOfMonths={ this.props.numberOfMonths }
               onDatesChange={this.onDatesChange}
               onFocusChange={this.onFocusChange}
+              onOutsideClick={ this.props.onBlur }
               focusedInput={focusedInput}
               startDate={startDate}
               endDate={endDate}

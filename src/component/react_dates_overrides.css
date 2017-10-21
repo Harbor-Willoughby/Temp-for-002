@@ -1,3 +1,8 @@
+
+.CalendarMonth_caption strong {
+    color: #565a5c !important;
+}
+
 .CalendarDay__selected {
     background: #8e88ff;
     color: #808080;
