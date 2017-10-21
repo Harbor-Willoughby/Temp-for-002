@@ -2,7 +2,7 @@
 @font-face {
   font-family: 'GOTHAM';
   font-weight: 700;
-  src: local("GOTHAM-BOLD"), url("/src/assets/fonts/GothamBold.woff2") format("woff2"), url("/src/assets/fonts/GothamBold.woff") format("woff"), url("/src/assets/fonts/GothamBold.ttf") format("truetype"); }
+  src: local("GOTHAM-BOLD"), url("./assets/fonts/GothamBold.woff2") format("woff2"), url("./assets/fonts/GothamBold.woff") format("woff"), url("./assets/fonts/GothamBold.ttf") format("truetype"); }
 * {
   font-family: 'Spoqa Han Sans'; }
 
