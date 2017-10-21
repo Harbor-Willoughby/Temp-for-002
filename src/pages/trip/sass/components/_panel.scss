@@ -77,7 +77,7 @@
 			@include panel-colors;
 		}
 
-		> .intro {
+		> .intro, >.text-intro {
 			@include padding($pad, $pad);
 			@include vendor('display', 'flex');
 			@include vendor('flex-grow', '0');

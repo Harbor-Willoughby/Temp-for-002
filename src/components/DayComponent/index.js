@@ -14,7 +14,7 @@ export default class DayComponent extends React.Component {
   render() {
     return (
       <section className="panel">
-        <div className="intro color2">
+        <div className="text-intro">
           <h2 className="major">DAY {this.props.dayNumber}</h2>
         </div>
         <div className="gallery">
