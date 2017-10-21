@@ -6,6 +6,8 @@ import _ from 'lodash';
 import accountIcon from '../image/accountIcon.png';
 import calendarIcon from './ic-calendar.png';
 import FromToDate from '../../component/FromToDate';
+import ReactDOM from 'react-dom';
+import firebase from '../../firebase';
 
 export default class CreateTripPage extends React.Component {
   constructor(props) {
@@ -16,6 +18,34 @@ export default class CreateTripPage extends React.Component {
       startDate: moment(),
       endDate: moment(),
     };
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    // Find the text field via the React ref
+    const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
+    console.log('this.state.startDate', this.state.startDate);
+    const title = '님을 위한' + text + '여행';
+    const newTripKey = firebase.database().ref('/trips').push({
+      title: text,
+      posted_by: {
+        name: '빌드002',
+        photoUrl: 'https://image.com',
+      },
+      startDate: this.state.startDate._d.toString(),
+      endDate: this.state.endDate._d.toString(),
+      thumbnailImageUrl: 'https://image.com',
+      createdAt: new Date().toString()
+    }).key;
+    // Clear form
+    ReactDOM.findDOMNode(this.refs.textInput).value = '';
+    // this.props.history.push("/trip/create/register");
+
+    this.props.history.push({
+      pathname: '/trip/create/register',
+      state: { data: newTripKey }
+    })
+
   }
 
   handleChange = (name, value) => {
@@ -46,6 +76,7 @@ export default class CreateTripPage extends React.Component {
               <img src={accountIcon} />
             </div>
           </header>
+          <form className="new-trip" onSubmit={this.handleSubmit.bind(this)}>
           <div className="create-trip--title-wrapper">
             <div className="create-trip--title">
               Scwrap에서 여행을 SCRAP하세요!
@@ -56,12 +87,12 @@ export default class CreateTripPage extends React.Component {
               <input
                 className="create-trip--text-input"
                 value={ name } type="text" onChange={ (e) => this.handleChange('name', e.target.value) }
-              />
+              ref="textInput" />
             </div>
             <div className="create-trip--input-wrapper">
               <div className="create-trip--date-input">
                 {startDateString} ~ {endDateString}
-                <img className="create-trip--date-img" alt="" src={ calendarIcon } onClick={ _.partial(this.handleChange, 'showDate', !showDate) } />
+                <img className="create-trip--date-img" alt="" src={ calendarIcon } onClick={ _.partial(this.handleChange, 'showDate', !showDate) } ref="dateInput" />
               </div>
               { showDate && <div className="create-trip--input-calendar">
                 <FromToDate
@@ -73,11 +104,12 @@ export default class CreateTripPage extends React.Component {
                 /></div> }
             </div>
             <div>
-              <div className="create-trip__button">
-                NEXT
+              <div>
+                  <button type="submit" className="create-trip__button">NEXT</button>
               </div>
             </div>
           </div>
+          </form>
         </div>
       </div>
     );
