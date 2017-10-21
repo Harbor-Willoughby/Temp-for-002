@@ -41,35 +41,90 @@ class TripDetail extends Component {
 	  });
   }
 
-  renderBucket = (events, key) => {
+  renderBucket = (events, key, type) => {
+    const type1 = "span-1-5";
+    const type2 = "span-3";
+    const type3 = "span-4-5";
+
+    let className = "group " + type;
+    
+    if (type == type1) {
+      return (<Event key={key} event={events[0]} classType="span-2-5" type="image" />);
+    }
+
+    let elements = [];
+    let count = 0;
+    let length = events.length;
+
+    events.map((event, key) => {
+      let className = "span-1-5";
+      if (count == 0 || count == 3 || length == 2) {
+        className = "span-3";
+      }
+
+      elements.push (<Event key={key} event={event} classType={className} type="image" />);
+
+      count ++;
+    })
+
     return (
-      <div key={key} className="group span-3">
+      <div key={key} className={className}>
         {
-          events.map((event, key) => {
-            return (<Event key={key} event={event} type="image" />);
-          })
+          elements
         }
       </div>
     );
   }
 
   renderEvents = (day) => {
+    const type1 = "span-1-5";
+    const type2 = "span-3";
+    const type3 = "span-4-5";
+
     let elements = [];
     let count = 0;
+    let length = day.length;
     let bucket = {};
+    let bucketType = {};
+    let type = null;
+    let size = 1;
 
     map(day, (event, key) => {
-      let byecketKey = parseInt(count / 3);
-      if (count % 3 == 0) {
-        bucket[byecketKey] = [];
+      let bucketKey = parseInt(count / size);
+      if (count % size == 0) {
+        bucket[bucketKey] = [];
+        
+        if (length == 1) {
+          type = type1;
+          size = 1;
+        } else if (length == 2) {
+          type = type2;
+          size = 2;
+        } else if (length == 3) {
+          type = type2;
+          size = 3;
+        } else if (length == 4) {
+          type = type3;
+          size = 4;
+        } else if (type == type2) {
+          type = type3;
+          size = 4;
+        } else {
+          type = type2;
+          size = 3;
+        }
+
+        bucketType[bucketKey] = type;
       }
 
-      bucket[byecketKey].push(event);
+      bucket[bucketKey].push(event);
       count ++;
+      length --;
     })
 
     map(bucket, (events, key) => {
-      elements.push(this.renderBucket(events, key));
+      console.log("k " + key + " " + bucketType[key]);
+      elements.push(this.renderBucket(events, key, bucketType[key]));
     });
 
     return elements;
