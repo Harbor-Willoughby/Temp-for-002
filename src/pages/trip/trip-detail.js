@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import firebase from '../../firebase';
 import map from 'lodash/map';
 import { objectValue } from '../../util/objectUtill';
+import Event from '../../components/event/event';
 
 const propTypes = {};
 const defaultProps = {};
@@ -30,7 +31,8 @@ class TripDetail extends Component {
     	<div>
         	<div>TripDetail Component</div>
         	<h1>{ objectValue(() => this.state.trip.title, '') }</h1>
-        </div>
+          <Event trip_id = { this.props.match.params.tripId }></Event>
+      </div>
     );
   }
 }
