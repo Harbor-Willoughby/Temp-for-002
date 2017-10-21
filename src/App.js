@@ -11,6 +11,7 @@ import Main from './pages/Main';
 import Login from './pages/Login';
 import MyPage from './pages/MyPage';
 import Trip from './stories/trip/trip';
+import TripDetail from './stories/trip/trip-detail';
 import logo from './logo.svg';
 import './App.css';
 import store from './store';
@@ -52,12 +53,19 @@ class App extends Component {
                   MyPage
                 </Link>
               </li>
+              <li>
+                <Link to="/trip">
+                  Trip
+                </Link>
+              </li>
             </ul>
           </nav>
           <div>
             <Route exact path="/" component={Main} />
             <Route path="/login" component={Login} />
             <Route path="/mypage" component={MyPage} />
+            <Route exact path="/trip" component={Trip} /> 
+            <Route path="/trip/:tripId" component={TripDetail} /> 
           </div>
         </div>
       </BrowserRouter>
