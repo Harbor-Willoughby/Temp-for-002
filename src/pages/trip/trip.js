@@ -24,9 +24,6 @@ class Trip extends Component {
 
   componentDidMount = () => {
     firebase.database().ref('/trips').orderByChild('createdAt').on('value', snapshot => {
-      // 현재 trips date를 가져오는 부분
-      console.log(snapshot.val());
-
       this.setState({
         trips: map(snapshot.val(), (trip, key) => ({ id: key, ...trip })),
       })
@@ -40,7 +37,7 @@ class Trip extends Component {
     firebase.database().ref('/trips').push({
       title: text,
       posted_by: {
-        name: '윌로비',
+        name: '빌드002',
         photoUrl: 'https://image.com',
       },
       startDate: '2017-10-31',
@@ -57,7 +54,7 @@ class Trip extends Component {
       <div>
         Main
 
-          <form className="new-task" onSubmit={this.handleSubmit.bind(this)} >
+          <form className="new-trip" onSubmit={this.handleSubmit.bind(this)} >
 
             <input
 
@@ -65,7 +62,7 @@ class Trip extends Component {
 
               ref="textInput"
 
-              placeholder="Type to add new tasks"
+              placeholder="Type to add new trips"
 
             />
 
@@ -76,7 +73,6 @@ class Trip extends Component {
                 데이터 로딩중
               </div>
             ) : this.state.trips.map((trip) => {
-              console.log(trip);
                 return (
                   <div key={trip.id}>
                     <Link to={`/trip/${trip.id}`}><h1>{trip.title}</h1></Link>
