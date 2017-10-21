@@ -7,7 +7,7 @@ import { objectValue } from '../../util/objectUtill';
 const propTypes = {};
 const defaultProps = {};
 
-class Trip extends Component {
+class TripDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,7 +16,7 @@ class Trip extends Component {
   }
 
   componentDidMount = () => {
-  	var id = this.props.location.pathname.split("/")[2];
+  	var id = this.props.match.params.tripId;
   	console.log('id : ' + id);
     firebase.database().ref('/trips/' + id).once('value').then((snapshot) => {
     	this.setState({
@@ -28,14 +28,14 @@ class Trip extends Component {
   render() {
     return (
     	<div>
-        	<div>Trip Component</div>
+        	<div>TripDetail Component</div>
         	<h1>{ objectValue(() => this.state.trip.title, '') }</h1>
         </div>
     );
   }
 }
 
-Trip.propTypes = propTypes;
-Trip.defaultProps = defaultProps;
+TripDetail.propTypes = propTypes;
+TripDetail.defaultProps = defaultProps;
 
-export default Trip;
+export default TripDetail;
