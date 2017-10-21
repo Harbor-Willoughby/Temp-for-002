@@ -8,17 +8,13 @@ export const loginGoogleUser = () => ({
   type: 'LOGIN_USER_REQUEST',
 })
 
-export const logout = () => {
-  return (dispatch) => {
-    auth.signOut()
-      .then(() => {
-        dispatch({
-          type: 'LOGOUT',
-        })
-      })
-      .catch(() => {
-        // auth.signOut 이 reject되는 경우가 있는지는 모르겠지만 일단 추가함
-        console.log('LOGIN FAILED')
-      })
-  }
-}
+// 실제적인 로그인이 일어났을 때 실행되는 action creator
+// App.js 내의 auth.onAuthStateChanged 가 실행시켜줌
+export const loginUser = (user) => ({
+  type: 'LOGIN_USER',
+  payload: user,
+})
+
+export const logoutUser = () => ({
+  type: 'LOGOUT_USER',
+})
