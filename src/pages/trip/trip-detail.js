@@ -41,7 +41,7 @@ class TripDetail extends Component {
 	  });
   }
 
-  renderBucket = (events, key, type) => {
+  renderBucket = (events, key, type, isSwitch) => {
     const type1 = "span-1-5";
     const type2 = "span-3";
     const type3 = "span-4-5";
@@ -58,11 +58,21 @@ class TripDetail extends Component {
 
     events.map((event, key) => {
       let className = "span-1-5";
-      if (count == 0 || count == 3 || length == 2) {
-        className = "span-3";
+      if (isSwitch) {
+        if (count == 0 || count == 3 || length == 2) {
+          className = "span-3";
+        }
+      } else {
+        if ((type == type3 && count == 1) || length == 2 || count == 2) {
+          className = "span-3";
+        }
       }
 
       elements.push (<Event key={key} event={event} classType={className} type="image" />);
+
+      if (count == 3 && count == 0) {
+
+      }
 
       count ++;
     })
@@ -88,10 +98,14 @@ class TripDetail extends Component {
     let bucketType = {};
     let type = null;
     let size = 1;
+    let bucketKey = 0;
 
     map(day, (event, key) => {
-      let bucketKey = parseInt(count / size);
       if (count % size == 0) {
+        if (count > 0) {
+          bucketKey ++;
+        }
+
         bucket[bucketKey] = [];
         
         if (length == 1) {
@@ -113,18 +127,21 @@ class TripDetail extends Component {
           type = type2;
           size = 3;
         }
-
+        
+        count = 0;
+        length -= size;
         bucketType[bucketKey] = type;
       }
 
       bucket[bucketKey].push(event);
       count ++;
-      length --;
     })
 
+    let isSwitch = false;
     map(bucket, (events, key) => {
-      console.log("k " + key + " " + bucketType[key]);
-      elements.push(this.renderBucket(events, key, bucketType[key]));
+
+      isSwitch = ! isSwitch;
+      elements.push(this.renderBucket(events, key, bucketType[key], isSwitch));
     });
 
     return elements;
