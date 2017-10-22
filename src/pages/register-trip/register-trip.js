@@ -63,11 +63,11 @@ class RegisterTrip extends React.Component {
         id="page-wrapper"
         style={{ position: 'relative' }}
       >
-        {this.state.isModalDisplayed && <AddEventModal typeEvents={this.state.typeEvents} registEvent={this.registEvent} closeModal={this.toggleModalOpen} />}
+        {this.state.isModalDisplayed && <AddEventModal typeEvents={this.state.typeEvents} registEvent={this.registEvent} closeModal={this.toggleModalOpen} history={this.props.history} e_key={this.props.location.state.data} />}
         <div>
           <img src={logoImage} className="logo" />
           <div>
-            <h2>당신의 여행 첫째날을 SCRAP 하세요!{ objectValue(() => this.props.location.state.data, '') }</h2>
+            <h2>당신의 여행 첫째날을 SCRAP 하세요! {this.props.location.state.data}</h2>
             <h3>사진, 링크, 메모 등 자유롭게 이용하실 수 있습니다.</h3>
           </div>
           <div

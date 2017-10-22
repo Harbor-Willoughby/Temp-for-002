@@ -23,7 +23,8 @@
 	.gallery {
 		@include vendor('align-items', 'stretch');
 		@include vendor('display', 'flex');
-		height: 100%;
+		height: 75%;
+		margin-top: 7rem;
 
 		> * {
 			width: 20rem;
