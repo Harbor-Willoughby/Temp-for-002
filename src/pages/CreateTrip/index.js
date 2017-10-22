@@ -77,8 +77,7 @@ export default class CreateTripPage extends React.Component {
       <div
         className="create-trip__wrapper"
         style={{
-          backgroundImage: `url(${bgImage})`,
-          height: '100vh',
+          backgroundImage: `url(${bgImage})`
         }}
       >
       <img src={logoImage} className="logo" />
@@ -100,7 +99,7 @@ export default class CreateTripPage extends React.Component {
             <div className="create-trip--input-wrapper">
               <input
                 className="create-trip--text-input"
-                value={ name } type="text" onChange={ (e) => this.handleChange('name', e.target.value) }
+                value={ name } placeholder="도시명을 입력하세요" type="text" onChange={ (e) => this.handleChange('name', e.target.value) }
               ref="textInput" />
             </div>
             <div className="create-trip--input-wrapper">
