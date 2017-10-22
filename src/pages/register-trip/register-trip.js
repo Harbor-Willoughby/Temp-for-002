@@ -15,31 +15,43 @@ export default class RegisterTrip extends React.Component {
 
     this.state = {
       isModalDisplayed: true,
+      typeEvents: null,
+      day: 1,
     }
+  }
+
+  componentDidMount = () => {
+    const pair_key = this.props.location.state.data;
+    
+    firebase.database().ref('/trips').child(pair_key).once('value').then((snapshot) => {
+      let trip = snapshot.val();
+      let dict = {};
+      map(trip.events, (event, key) => {
+        if (dict[event.type] == null) {
+          dict[event.type] = [];
+        }
+        
+        dict[event.type].push(event);
+      });
+
+      this.setState({ typeEvents: dict });
+    });
   }
 
   toggleModalOpen = () => this.setState({ isModalDisplayed: !this.state.isModalDisplayed })
 
-  handleSubmit(event) {
-    var pair_key = this.props.location.state.data;
-
-    event.preventDefault();
-    // Find the text field via the React ref
-    const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
-    firebase.database().ref('/events').push({
+  registEvent = (type, event) => {
+    const pair_key = this.props.location.state.data;
+    const days = this.props.location.state.days;
+    const day = this.state.day;
+    
+    firebase.database().ref('/trips').child(pair_key).child('/events').push({
       pair_key: pair_key,
-      title: text,
-      posted_by: {
-        name: '빌드002',
-        photoUrl: 'https://image.com',
-      },
-      startDate: '2017-10-31',
-      endDate: '2017-11-03',
-      thumbnailImageUrl: 'https://image.com',
-      createdAt: new Date().toString()
+      type: type,
+      day: day,
+      createdAt: new Date().toString(),
+      ...event
     })
-    // Clear form
-    ReactDOM.findDOMNode(this.refs.textInput).value = '';
   }
 
   render() {
@@ -49,11 +61,11 @@ export default class RegisterTrip extends React.Component {
         id="page-wrapper"
         style={{ position: 'relative' }}
       >
-        {this.state.isModalDisplayed && <AddEventModal closeModal={this.toggleModalOpen} />}
+        {this.state.isModalDisplayed && <AddEventModal typeEvents={this.state.typeEvents} registEvent={this.registEvent} closeModal={this.toggleModalOpen} />}
         <div>
           <img src={logoImage} className="logo" />
           <div>
-            <h2>당신의 여행 첫째날을 SCRAP 하세요!</h2>
+            <h2>당신의 여행 첫째날을 SCRAP 하세요!{this.props.location.state.data}</h2>
             <h3>사진, 링크, 메모 등 자유롭게 이용하실 수 있습니다.</h3>
           </div>
           <div
@@ -65,21 +77,6 @@ export default class RegisterTrip extends React.Component {
             />
           </div>
         </div>
-        {/*
-      <form className="new-event" onSubmit={this.handleSubmit.bind(this)} >
-
-        <input
-
-        type="text"
-
-        ref="textInput"
-
-        placeholder="Type to add new events"
-
-        />
-
-      </form>
-      */}
     </div>
     );
   }
