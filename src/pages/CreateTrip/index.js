@@ -92,8 +92,7 @@ export default class CreateTripPage extends React.Component {
       <div
         className="create-trip__wrapper"
         style={{
-          backgroundImage: `url(${bgImage})`,
-          height: '100%',
+          backgroundImage: `url(${bgImage})`
         }}
       >
       <img src={logoImage} className="logo" />
