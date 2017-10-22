@@ -19,7 +19,8 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-saga": "^0.16.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "styled-components": "^2.2.1"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ -o src/",
@@ -36,6 +37,7 @@
     "@storybook/addon-links": "^3.2.13",
     "@storybook/react": "^3.2.13",
     "react-svg-loader": "^2.1.0",
-    "sass-loader": "^6.0.6"
+    "sass-loader": "^6.0.6",
+    "url-loader": "^0.6.2"
   }
 }

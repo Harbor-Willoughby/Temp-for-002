@@ -30,6 +30,14 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(png|jpg|gif)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: '[name].[ext]'
+        }
+      }
     ]
   },
   resolve: {

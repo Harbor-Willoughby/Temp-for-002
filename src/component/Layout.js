@@ -1,6 +1,15 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import './Layout.scss';
+import styled from 'styled-components';
+
+const LoginBoxWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-image: url(../pages/image/main-bg.png);
+  background-size: cover;
+  overflow: hidden;
+`;
 
 const propTypes = {};
 
@@ -10,20 +19,13 @@ class Layout extends Component {
   constructor(props) {
     super(props);
   }
-
   componentDidMount() {}
 
   render() {
     return (
-        <div className="layout">
-          <header>Header</header>
-          <div>
-            content
-          </div>
-          <footer>
-            footer
-          </footer>
-        </div>
+        <LoginBoxWrapper>
+          { this.props.children }
+        </LoginBoxWrapper>
     );
   }
 }
