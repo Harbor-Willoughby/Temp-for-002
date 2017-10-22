@@ -35,6 +35,8 @@
 			position: relative;
 			border-bottom: 0;
 			overflow: hidden;
+			background-size: cover;
+			background-position: center center;
 
 			img {
 				@include vendor('transition', 'transform #{_duration(transition)} ease-in-out');

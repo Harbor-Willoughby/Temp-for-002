@@ -23,7 +23,7 @@ class RegisterTrip extends React.Component {
   }
 
   componentDidMount = () => {
-    const pair_key = this.props.location.state.data;
+    const pair_key = objectValue(() => this.props.location.state.data, '');
 
     firebase.database().ref('/trips').child(pair_key).once('value').then((snapshot) => {
       let trip = snapshot.val();

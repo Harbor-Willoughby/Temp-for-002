@@ -24,7 +24,7 @@ class Screenshot extends Component {
   render() {
     return (
         <div>
-          <img alt="" src={ this.props.imageUrl } />
+          <img width={ 200 } alt="" src={ this.props.imageUrl } />
         </div>
     );
   }

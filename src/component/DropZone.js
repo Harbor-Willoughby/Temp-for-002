@@ -15,6 +15,7 @@ const DropZoneBox = styled.section`
 const DropZoneUlBox = styled.ul`
   margin-left: 10px;
   text-decoration: none;
+  color: #000;
 `;
 
 const propTypes = {};

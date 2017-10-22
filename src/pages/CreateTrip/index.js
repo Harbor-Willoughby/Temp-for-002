@@ -32,7 +32,7 @@ export default class CreateTripPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    
+
     // Find the text field via the React ref
     const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
     console.log('this.state.startDate', this.state.startDate);
@@ -59,14 +59,14 @@ export default class CreateTripPage extends React.Component {
     })
 
   }
-  
+
     diffDate = (date1, date2) => {
       let diffDate1 = date1 instanceof Date ? date1 : new Date(date1);
       let diffDate2 = date2 instanceof Date ? date2 : new Date(date2);
-   
+
       var diff = Math.abs(diffDate2.getTime() - diffDate1.getTime());
       diff = Math.ceil(diff / (1000 * 3600 * 24)) + 1;
-   
+
       return diff;
     }
 
@@ -115,7 +115,7 @@ export default class CreateTripPage extends React.Component {
             <div className="create-trip--input-wrapper">
               <input
                 className="create-trip--text-input"
-                value={ name } type="text" onChange={ (e) => this.handleChange('name', e.target.value) }
+                value={ name } placeholder="도시명을 입력하세요" type="text" onChange={ (e) => this.handleChange('name', e.target.value) }
               ref="textInput" />
             </div>
             <div className="create-trip--input-wrapper">
