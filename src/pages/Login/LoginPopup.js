@@ -169,9 +169,13 @@ const RightImgBox = styled.img`
   width: 100%;
 `;
 
-const propTypes = {};
+const propTypes = {
 
-const defaultProps = {};
+};
+
+const defaultProps = {
+  onClose: () => ({}),
+};
 
 class LoginPopup extends Component {
   constructor(props) {
@@ -218,7 +222,7 @@ class LoginPopup extends Component {
             </LoginButtonBox>
           </LeftBox>
           <RightBox>
-            <CloseBox>
+            <CloseBox onClick={ this.props.onClose }>
               <img alt="" src={BtnClose}/>
             </CloseBox>
             { this.getRightRender() }

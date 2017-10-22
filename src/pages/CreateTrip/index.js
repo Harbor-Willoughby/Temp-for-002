@@ -9,6 +9,14 @@ import FromToDate from '../../component/FromToDate';
 import ReactDOM from 'react-dom';
 import firebase from '../../firebase';
 import logoImage from './logo.png';
+import LoginPopup from '../Login/LoginPopup';
+import styled from 'styled-components';
+
+const LoginPopupBox = styled.div`
+  position: absolute;
+  top: 200px;
+  left: 250px;
+`;
 
 export default class CreateTripPage extends React.Component {
   constructor(props) {
@@ -18,6 +26,7 @@ export default class CreateTripPage extends React.Component {
       showDate: false,
       startDate: moment(),
       endDate: moment(),
+      isOpen: false,
     };
   }
 
@@ -55,6 +64,12 @@ export default class CreateTripPage extends React.Component {
     });
   };
 
+  toggleOpen = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  };
+
   render() {
     const { name, startDate, endDate, showDate } = this.state;
 
@@ -66,7 +81,7 @@ export default class CreateTripPage extends React.Component {
         className="create-trip__wrapper"
         style={{
           backgroundImage: `url(${bgImage})`,
-          height: '100vh',
+          height: '100%',
         }}
       >
       <img src={logoImage} className="logo" />
@@ -74,8 +89,8 @@ export default class CreateTripPage extends React.Component {
           <header className="create-trip--nav">
             <div className="create-trip__logo">
             </div>
-            <div>
-              <img src={accountIcon} />
+            <div style={{ cursor: 'pointer' }}>
+              <img src={accountIcon} onClick={ () => this.toggleOpen() } />
             </div>
           </header>
           <form className="new-trip" onSubmit={this.handleSubmit.bind(this)}>
@@ -108,6 +123,7 @@ export default class CreateTripPage extends React.Component {
             <button style={{ border: 'none', }} type="submit" className="create-trip__button">NEXT</button>
           </div>
           </form>
+          { this.state.isOpen && <LoginPopupBox><LoginPopup onClose={ () => this.toggleOpen() } /></LoginPopupBox> }
         </div>
       </div>
     );

@@ -1,5 +1,6 @@
 import React from 'react'
 import './AddEventModal.css';
+import DropZoneComponent from '../../component/DropZone';
 
 const InputModeButton = (props) => {
   return (
@@ -29,7 +30,7 @@ export default class AddEventModal extends React.Component {
     if (this.state.inputMode === 'upload') {
       return (
         <div>
-          파일을 업로드 하세요
+          <DropZoneComponent name="파일을 업로드 하세요" />
         </div>
       )
     }
