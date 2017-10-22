@@ -23,11 +23,43 @@ export default class AddEventModal extends React.Component {
     this.state = {
       inputMode: 'upload', // link, search, memo
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   changeMode = (mode) => this.setState({
     inputMode: mode,
   })
+
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    
+    // // Find the text field via the React ref
+    // const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
+    // console.log('this.state.startDate', this.state.startDate);
+    // const title = '님을 위한' + text + '여행';
+    // const newTripKey = firebase.database().ref('/trips').push({
+    //   title: text,
+    //   posted_by: {
+    //     name: '빌드002',
+    //     photoUrl: 'https://image.com',
+    //   },
+    //   startDate: this.state.startDate._d.toString(),
+    //   endDate: this.state.endDate._d.toString(),
+    //   thumbnailImageUrl: 'https://image.com',
+    //   createdAt: new Date().toString()
+    // }).key;
+    // // Clear form
+    // ReactDOM.findDOMNode(this.refs.textInput).value = '';
+    // // this.props.history.push("/trip/create/register");
+
+    // const days = this.diffDate(this.state.startDate._d, this.state.endDate._d);
+    this.props.history.push({
+      pathname: '/trip/' + this.props.e_key
+      // state: { data: newTripKey, days: days }
+    })
+
+  }
 
   renderContent = () => {
     if (this.state.inputMode === 'upload') {
@@ -55,6 +87,11 @@ export default class AddEventModal extends React.Component {
   }
 
   render() {
+    console.log('this.props.history : ');
+    console.log(this.props.history);
+
+    console.log('this.props.e_key : ');
+    console.log(this.props.e_key);
     return (
       <div className="modal-wrapper">
         <div>
@@ -91,6 +128,9 @@ export default class AddEventModal extends React.Component {
                 onClick={() => this.changeMode('link')}
                 label="링크"
               />
+              <form className="new-events" onSubmit={this.handleSubmit}>
+               <button type="submit">완료</button>
+              </form>
             </div>
             <div className="modal-content-right-column">
               {this.renderContent()}

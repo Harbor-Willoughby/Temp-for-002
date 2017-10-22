@@ -604,7 +604,8 @@ table {
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
-  height: 100%; }
+  height: 75%;
+  margin-top: 7rem; }
   .gallery > * {
     width: 20rem;
     height: 100%; }
@@ -1638,9 +1639,9 @@ table {
   .panel.spotlight .content {
     min-height: 30rem; } }
 .text-intro {
-  position: absolute;
-  top: -11rem;
-  margin-left: -30rem; }
+  margin-right: -22rem;
+  margin-top: -23rem;
+  z-index: 999; }
 
 /* Page Wrapper */
 #page-wrapper {
