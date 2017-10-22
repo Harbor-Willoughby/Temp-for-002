@@ -9,6 +9,14 @@ import FromToDate from '../../component/FromToDate';
 import ReactDOM from 'react-dom';
 import firebase from '../../firebase';
 import logoImage from './logo.png';
+import LoginPopup from '../Login/LoginPopup';
+import styled from 'styled-components';
+
+const LoginPopupBox = styled.div`
+  position: absolute;
+  top: 200px;
+  left: 250px;
+`;
 
 export default class CreateTripPage extends React.Component {
   constructor(props) {
@@ -18,12 +26,13 @@ export default class CreateTripPage extends React.Component {
       showDate: false,
       startDate: moment(),
       endDate: moment(),
+      isOpen: false,
     };
   }
 
   handleSubmit = (event) => {
     event.preventDefault();
-    
+
     // Find the text field via the React ref
     const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
     console.log('this.state.startDate', this.state.startDate);
@@ -50,20 +59,26 @@ export default class CreateTripPage extends React.Component {
     })
 
   }
-  
+
     diffDate = (date1, date2) => {
       let diffDate1 = date1 instanceof Date ? date1 : new Date(date1);
       let diffDate2 = date2 instanceof Date ? date2 : new Date(date2);
-   
+
       var diff = Math.abs(diffDate2.getTime() - diffDate1.getTime());
       diff = Math.ceil(diff / (1000 * 3600 * 24)) + 1;
-   
+
       return diff;
     }
 
   handleChange = (name, value) => {
     this.setState({
       [name]: value
+    });
+  };
+
+  toggleOpen = () => {
+    this.setState({
+      isOpen: !this.state.isOpen
     });
   };
 
@@ -77,7 +92,8 @@ export default class CreateTripPage extends React.Component {
       <div
         className="create-trip__wrapper"
         style={{
-          backgroundImage: `url(${bgImage})`
+          backgroundImage: `url(${bgImage})`,
+          height: '100%',
         }}
       >
       <img src={logoImage} className="logo" />
@@ -85,8 +101,8 @@ export default class CreateTripPage extends React.Component {
           <header className="create-trip--nav">
             <div className="create-trip__logo">
             </div>
-            <div>
-              <img src={accountIcon} />
+            <div style={{ cursor: 'pointer' }}>
+              <img src={accountIcon} onClick={ () => this.toggleOpen() } />
             </div>
           </header>
           <form className="new-trip" onSubmit={this.handleSubmit.bind(this)}>
@@ -119,6 +135,7 @@ export default class CreateTripPage extends React.Component {
             <button style={{ border: 'none', }} type="submit" className="create-trip__button">NEXT</button>
           </div>
           </form>
+          { this.state.isOpen && <LoginPopupBox><LoginPopup onClose={ () => this.toggleOpen() } /></LoginPopupBox> }
         </div>
       </div>
     );

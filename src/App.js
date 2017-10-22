@@ -22,6 +22,8 @@ import store from './store';
 import firebase from './firebase';
 import { loginUser, logoutUser } from './actions';
 import Voucher from './pages/Voucher/Voucher';
+import Loginbox from './pages/Login/LoginBox';
+import Menu from './pages/Menu';
 
 class App extends Component {
   constructor(props) {
@@ -50,6 +52,8 @@ class App extends Component {
           <Route path="/upload" component={Upload} />
           <Route path="/search" component={Search} />
           <Route path="/voucher" component={Voucher} />
+          <Route path="/main" component={CreateTrip} />
+          <Route path="/menu" component={Menu} />
         </Switch>
       </BrowserRouter>
     );

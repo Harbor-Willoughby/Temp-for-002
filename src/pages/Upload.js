@@ -8,7 +8,7 @@ import {
 
 
 class Upload extends React.Component {
-    // 파일 업로더 
+    // 파일 업로더
     fileUploader = (e) => {
         const file = e.target.files[0];
         const path = 'temp';
@@ -17,12 +17,12 @@ class Upload extends React.Component {
         let task = storageRef.put(file);
 
         task.on(firebase.storage.TaskEvent.STATE_CHANGED, snapshot => {
-            let progress = (snapshot.bytesTransferred/snapshot.totalBytes) * 100;   
+            let progress = (snapshot.bytesTransferred/snapshot.totalBytes) * 100;
             console.log(progress)
           }, function error(err) {
-        
+
           },function complete() {
-        
+
           });
     }
 
@@ -30,7 +30,7 @@ class Upload extends React.Component {
     urlUploader = () => {
         const urlDOM = ReactDOM.findDOMNode(this.refs.url);
         const path = 'temp';
-        
+
         let imageURL = urlDOM.value.trim();
         let imageName = imageURL.match(/\w+\.[A-Za-z]{3,4}(?=\?|$)/g)[0];
         //let imageName = imageURL.split(",")[1]; // 구글 이미지 주소에서 이름 가져오는 부분 문제 =
@@ -41,18 +41,18 @@ class Upload extends React.Component {
                 let objectURL = URL.createObjectURL(blob);
                 let image = new Image();
                 image.src = objectURL;
-        
+
 
                 let storageRef = firebase.storage().ref(path).child(imageName);
                 let task = storageRef.put(blob);
 
                 task.on(firebase.storage.TaskEvent.STATE_CHANGED, snapshot => {
-                    let progress = (snapshot.bytesTransferred/snapshot.totalBytes) * 100;   
+                    let progress = (snapshot.bytesTransferred/snapshot.totalBytes) * 100;
                     console.log(progress)
                 }, function error(err) {
-                
+
                 },function complete() {
-                
+
                 });
             });
     }
@@ -65,16 +65,16 @@ class Upload extends React.Component {
         }
         return new Blob([u8arr], {type:mime});
     }
-    
+
 
     render() {
         return (
             <div>
-                Upload 
+                Upload
                 <br/>
-                <input type="file" ref="files" onChange={this.fileUploader} /> 
+                <input type="file" ref="files" onChange={this.fileUploader} />
                 <br />
-                <input type="text" ref="url" placeholder="이미지 URL" /> 
+                <input type="text" ref="url" placeholder="이미지 URL" />
                 <button onClick={this.urlUploader}>업로드</button>
             </div>
         );

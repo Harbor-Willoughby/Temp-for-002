@@ -7,9 +7,11 @@ import bgImage from './bg02.jpg';
 import logoImage from './logo.png';
 import popbuttonImage from './pop-button.png';
 import AddEventModal from './AddEventModal';
+import {objectValue} from '../../util/objectUtill';
+import {withRouter} from 'react-router-dom';
 
 
-export default class RegisterTrip extends React.Component {
+class RegisterTrip extends React.Component {
   constructor(props) {
     super(props);
 
@@ -21,8 +23,8 @@ export default class RegisterTrip extends React.Component {
   }
 
   componentDidMount = () => {
-    const pair_key = this.props.location.state.data;
-    
+    const pair_key = objectValue(() => this.props.location.state.data, '');
+
     firebase.database().ref('/trips').child(pair_key).once('value').then((snapshot) => {
       let trip = snapshot.val();
       let dict = {};
@@ -30,7 +32,7 @@ export default class RegisterTrip extends React.Component {
         if (dict[event.type] == null) {
           dict[event.type] = [];
         }
-        
+
         dict[event.type].push(event);
       });
 
@@ -44,7 +46,7 @@ export default class RegisterTrip extends React.Component {
     const pair_key = this.props.location.state.data;
     const days = this.props.location.state.days;
     const day = this.state.day;
-    
+
     firebase.database().ref('/trips').child(pair_key).child('/events').push({
       pair_key: pair_key,
       type: type,
@@ -55,7 +57,7 @@ export default class RegisterTrip extends React.Component {
   }
 
   render() {
-    document.body.style.backgroundImage = `url(${bgImage})`; 
+    document.body.style.backgroundImage = `url(${bgImage})`;
     return (
       <div
         id="page-wrapper"
@@ -81,3 +83,5 @@ export default class RegisterTrip extends React.Component {
     );
   }
 }
+
+export default RegisterTrip;

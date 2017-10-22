@@ -4,6 +4,7 @@ import AddImageSearch from './AddImageSearch';
 import AddMemo from './AddMemo';
 import AddLink from './AddLink';
 import './AddEventModal.css';
+import DropZoneComponent from '../../component/DropZone';
 
 const InputModeButton = (props) => {
   return (
@@ -65,7 +66,7 @@ export default class AddEventModal extends React.Component {
     if (this.state.inputMode === 'upload') {
       return (
         <AddImageUpload registEvent={this.props.registEvent} />
-      )
+      );
     }
     if (this.state.inputMode === 'link') {
       return (

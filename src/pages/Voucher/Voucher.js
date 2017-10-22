@@ -11,6 +11,8 @@ import BtnPlus from './image/btn-plus.png';
 import VoucherImage from './image/voucher-image.jpeg';
 import _ from 'lodash';
 import './Voucher.css';
+import Logo from '../../component/Logo';
+import People from '../../component/People';
 
 const propTypes = {};
 
@@ -66,12 +68,8 @@ class Voucher extends Component {
           </div>}
           {this.state.isActive &&
           <div onClick={this.onBlur} className="voucher-wrapper-shadow"></div>}
-          <div className="logo">
-            Scwrap
-          </div>
-          <div className="people">
-            <img alt="" src={ScwrapPeople}/>
-          </div>
+          <Logo />
+          <People />
           <div className="content">
             <div className="scroll-horizonal">
               <div className="inner">
