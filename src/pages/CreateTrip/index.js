@@ -23,6 +23,7 @@ export default class CreateTripPage extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    
     // Find the text field via the React ref
     const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
     console.log('this.state.startDate', this.state.startDate);
@@ -42,12 +43,23 @@ export default class CreateTripPage extends React.Component {
     ReactDOM.findDOMNode(this.refs.textInput).value = '';
     // this.props.history.push("/trip/create/register");
 
+    const days = this.diffDate(this.state.startDate._d, this.state.endDate._d);
     this.props.history.push({
       pathname: '/trip/create/register',
-      state: { data: newTripKey }
+      state: { data: newTripKey, days: days }
     })
 
   }
+  
+    diffDate = (date1, date2) => {
+      let diffDate1 = date1 instanceof Date ? date1 : new Date(date1);
+      let diffDate2 = date2 instanceof Date ? date2 : new Date(date2);
+   
+      var diff = Math.abs(diffDate2.getTime() - diffDate1.getTime());
+      diff = Math.ceil(diff / (1000 * 3600 * 24)) + 1;
+   
+      return diff;
+    }
 
   handleChange = (name, value) => {
     this.setState({

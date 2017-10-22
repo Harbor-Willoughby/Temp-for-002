@@ -32,22 +32,22 @@ export default class AddEventModal extends React.Component {
   renderContent = () => {
     if (this.state.inputMode === 'upload') {
       return (
-        <AddImageUpload />
+        <AddImageUpload registEvent={this.props.registEvent} />
       )
     }
     if (this.state.inputMode === 'link') {
       return (
-        <AddLink />
+        <AddLink registEvent={this.props.registEvent} />
       )
     }
     if (this.state.inputMode === 'search') {
       return (
-        <AddImageSearch />
+        <AddImageSearch typeEvents={this.props.typeEvents} registEvent={this.props.registEvent} />
       )
     }
     if (this.state.inputMode === 'memo') {
       return (
-        <AddMemo />
+        <AddMemo typeEvents={this.props.typeEvents} registEvent={this.props.registEvent} />
       )
     }
 
