@@ -1,4 +1,8 @@
 import React from 'react'
+import AddImageUpload from './AddImageUpload';
+import AddImageSearch from './AddImageSearch';
+import AddMemo from './AddMemo';
+import AddLink from './AddLink';
 import './AddEventModal.css';
 import DropZoneComponent from '../../component/DropZone';
 
@@ -29,30 +33,22 @@ export default class AddEventModal extends React.Component {
   renderContent = () => {
     if (this.state.inputMode === 'upload') {
       return (
-        <div>
-          <DropZoneComponent name="파일을 업로드 하세요" />
-        </div>
-      )
+        <AddImageUpload registEvent={this.props.registEvent} />
+      );
     }
     if (this.state.inputMode === 'link') {
       return (
-        <div>
-          링크를 첨부하세요
-        </div>
+        <AddLink registEvent={this.props.registEvent} />
       )
     }
     if (this.state.inputMode === 'search') {
       return (
-        <div>
-          사진을 검색하세요
-        </div>
+        <AddImageSearch typeEvents={this.props.typeEvents} registEvent={this.props.registEvent} />
       )
     }
     if (this.state.inputMode === 'memo') {
       return (
-        <div>
-          메모를 입력하세요
-        </div>
+        <AddMemo typeEvents={this.props.typeEvents} registEvent={this.props.registEvent} />
       )
     }
 

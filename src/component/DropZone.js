@@ -31,6 +31,9 @@ class DropZoneComponent extends Component {
     this.setState({
       files
     });
+    if(files.length) {
+      this.props.onChange(files[0]);
+    }
   }
 
   componentDidMount() {}

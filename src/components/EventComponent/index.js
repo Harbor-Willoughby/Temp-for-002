@@ -5,31 +5,41 @@ import React from 'react'
 // 반드시 DayComponent의 자식 형태로 사용되어야 함
 export default class EventComponent extends React.Component {
   renderImageType = () => {
+    let event = this.props.event;
     let className = "image filtered " + this.props.classType;
     
     return (
-      <a href="images/gallery/fulls/01.jpg" className={className} data-position="bottom"><img src="images/gallery/thumbs/01.jpg" alt="" /></a>
+      <img src={event.image} className={className} alt={event.createAt} />
     )
   }
+  
+    renderLinkType = () => {
+      let className = "image filtered " + this.props.classType;
+      
+      return (
+        <a href="images/gallery/fulls/05.jpg" className={className} data-position="top"><img src="images/gallery/thumbs/05.jpg" alt="" /></a>
+      )
+    }
+    
+      renderMemoType = () => {
+        let className = "image filtered " + this.props.classType;
+        let event = this.props.event;
 
-  renderLinkType = () => {
-    return (
-      <div className="group span-4-5">
-        <a href="images/gallery/fulls/05.jpg" className="image filtered span-3" data-position="top"><img src="images/gallery/thumbs/05.jpg" alt="" /></a>
-        <a href="images/gallery/fulls/06.jpg" className="image filtered span-1-5" data-position="center"><img src="images/gallery/thumbs/06.jpg" alt="" /></a>
-        <a href="images/gallery/fulls/07.jpg" className="image filtered span-1-5" data-position="bottom"><img src="images/gallery/thumbs/07.jpg" alt="" /></a>
-        <a href="images/gallery/fulls/08.jpg" className="image filtered span-3" data-position="top"><img src="images/gallery/thumbs/08.jpg" alt="" /></a>
-      </div>
-    )
-  }
+        return (
+          <div><strong>{event.title}</strong></div>
+        )
+      }
 
   render() {
-    if (this.props.type === 'image') {
+
+console.log(this.props.event);
+    if (this.props.type === 'memo') {
+      return this.renderMemoType();
+    } else {
       return this.renderImageType();
     }
-    if (this.props.type === 'link') {
-      return this.renderLinkType();
-    }
+
+    
     return null;
   }
 }
