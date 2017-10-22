@@ -9,7 +9,9 @@ export default class EventComponent extends React.Component {
     let className = "image filtered " + this.props.classType;
     
     return (
-      <img src={event.image} className={className} alt={event.createAt} />
+      <img style={{
+          backgroundImage: `url(${event.image})`
+        }} className={className} alt={event.createAt} />
     )
   }
   

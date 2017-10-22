@@ -612,7 +612,9 @@ table {
     display: block;
     position: relative;
     border-bottom: 0;
-    overflow: hidden; }
+    overflow: hidden;
+    background-size: cover;
+    background-position: center center; }
     .gallery .image img {
       -moz-transition: -moz-transform 0.2s ease-in-out;
       -webkit-transition: -webkit-transform 0.2s ease-in-out;
