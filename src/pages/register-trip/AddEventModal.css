@@ -12,6 +12,8 @@
   padding: 10px;
   font-size: 1.2rem;
   font-weight: bold;
+    background: transparent;
+    border: none;
 }
 
 .active-underline {

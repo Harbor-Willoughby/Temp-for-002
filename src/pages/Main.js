@@ -30,18 +30,13 @@ export default class Main extends React.Component {
               </Link>
             </li>
             <li>
-              <Link to="/mypage">
-                MyPage
-              </Link>
-            </li>
-            <li>
               <Link to="/trip">
                 Trip
               </Link>
             </li>
             <li>
-              <Link to="/search">
-                Search
+              <Link to="/voucher">
+                Voucher
               </Link>
             </li>
           </ul>
