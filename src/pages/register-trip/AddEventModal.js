@@ -35,6 +35,8 @@ export default class AddEventModal extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     
+    this.props.nextDay();
+
     // // Find the text field via the React ref
     // const text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
     // console.log('this.state.startDate', this.state.startDate);
@@ -87,6 +89,11 @@ export default class AddEventModal extends React.Component {
     return null
   }
 
+  changeDay = (day) => {
+    this.setState({day: day});
+    this.props.changeDay(this.state.day);
+  }
+
   render() {
     console.log('this.props.history : ');
     console.log(this.props.history);
@@ -130,7 +137,7 @@ export default class AddEventModal extends React.Component {
                 label="링크"
               />
               <form className="new-events" onSubmit={this.handleSubmit}>
-               <button type="submit">완료</button>
+               <button type="submit" className="inputmode-button">Save</button>
               </form>
             </div>
             <div className="modal-content-right-column">

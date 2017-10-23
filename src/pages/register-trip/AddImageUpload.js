@@ -18,6 +18,8 @@ class Main extends React.Component {
 
     // 파일 업로더
     fileUploader = (file) => {
+        console.log('file : ');
+        console.log(file);
         const path = 'temp';
 
         let storageRef = firebase.storage().ref(path).child(file.name);
@@ -27,10 +29,15 @@ class Main extends React.Component {
         task.on(firebase.storage.TaskEvent.STATE_CHANGED, snapshot => {
             let progress = (snapshot.bytesTransferred/snapshot.totalBytes) * 100;
 
+            console.log('progress : ');
+            console.log(progress);
+
             if (progress == 100) {
                 this.uploadComplete(snapshot.downloadURL);
             }
           }, function error(err) {
+            console.log('err : ');
+            console.log(err);
 
           },function complete() {
 

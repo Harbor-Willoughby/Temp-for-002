@@ -18,7 +18,7 @@ class RegisterTrip extends React.Component {
     this.state = {
       isModalDisplayed: true,
       typeEvents: null,
-      day: 1,
+      day: 2,
     }
   }
 
@@ -43,9 +43,11 @@ class RegisterTrip extends React.Component {
   toggleModalOpen = () => this.setState({ isModalDisplayed: !this.state.isModalDisplayed })
 
   registEvent = (type, event) => {
+    console.log('registEvent : ');
     const pair_key = this.props.location.state.data;
     const days = this.props.location.state.days;
     const day = this.state.day;
+    console.log('day  = ', day);
 
     firebase.database().ref('/trips').child(pair_key).child('/events').push({
       pair_key: pair_key,
@@ -56,6 +58,18 @@ class RegisterTrip extends React.Component {
     })
   }
 
+  nextDay = () => {
+    let day = this.state.day + 1;
+    console.log('day : ' + day);
+    this.setState({day: day});
+  }
+
+  changeDay = (day) => {
+    console.log('changeDay!!');
+    console.log('day : ' +day);
+    this.setState({day: day});
+  }
+
   render() {
     document.body.style.backgroundImage = `url(${bgImage})`;
     return (
@@ -63,7 +77,7 @@ class RegisterTrip extends React.Component {
         id="page-wrapper"
         style={{ position: 'relative' }}
       >
-        {this.state.isModalDisplayed && <AddEventModal typeEvents={this.state.typeEvents} registEvent={this.registEvent} closeModal={this.toggleModalOpen} history={this.props.history} e_key={this.props.location.state.data} />}
+        {this.state.isModalDisplayed && <AddEventModal changeDay={this.changeDay} nextDay={this.nextDay} typeEvents={this.state.typeEvents} registEvent={this.registEvent} closeModal={this.toggleModalOpen} history={this.props.history} e_key={this.props.location.state.data} day_key={this.state.day} />}
         <div>
           <img src={logoImage} className="logo" />
           <div>
